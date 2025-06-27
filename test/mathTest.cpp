@@ -13,7 +13,7 @@ bool check(float difference) {
 }
 
 void testFract() {
-    debug::out << "*** testFract\n";
+    debug::out << "*** test fract\n";
     bool result = true;
     for (int i = -20; i <= 20; ++i) {
         float x = i * 0.1f;
@@ -29,7 +29,7 @@ void testFract() {
 }
 
 void testSin() {
-    debug::out << "*** testSin\n";
+    debug::out << "*** test sin\n";
     bool result = true;
     for (int i = -20; i <= 20; ++i) {
         float x = i * 0.1f;
@@ -45,7 +45,7 @@ void testSin() {
 }
 
 void testCos() {
-    debug::out << "*** testCos\n";
+    debug::out << "*** test cos\n";
     bool result = true;
     for (int i = -20; i <= 20; ++i) {
         float x = i * 0.1f;
@@ -61,7 +61,7 @@ void testCos() {
 }
 
 void testAtan() {
-    debug::out << "*** testAtan\n";
+    debug::out << "*** test atan2\n";
     bool result = true;
     for (int i = -10; i <= 10; ++i) {
         float x = i * 0.1f * 3.1415926f;
@@ -69,7 +69,7 @@ void testAtan() {
         float a = cos(x);
         float b = sin(x);
 
-        float y = atan(b, a);
+        float y = atan2(b, a);
         float z = std::atan2(b, a);
         float d = y - z;
 
@@ -81,6 +81,7 @@ void testAtan() {
 
 int main() {
     math::init();
+    debug::out << "mathTest\n";
 
     testFract();
     testSin();

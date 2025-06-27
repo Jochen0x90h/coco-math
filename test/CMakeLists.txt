@@ -38,15 +38,15 @@ function(board_test TEST BOARD_LIB)
 endfunction()
 
 board_test(mathTest coco-devboards::native)
-board_test(mathTest coco-devboards::stm32g431nucleo)
-board_test(mathTest coco-devboards::stm32g474nucleo)
+board_test(mathTest coco-devboards::nucleo-g431rb)
+board_test(mathTest coco-devboards::nucleo-g474re)
+
+#board_test(colorTemperatureTest coco-devboards::native)
 
 
 
-
+# unit tests for "normal" operating systems
 if(NOT ${CMAKE_CROSSCOMPILING})
-
-    # unit tests for "normal" operating systems
     add_executable(gTest
         gTest.cpp
     )

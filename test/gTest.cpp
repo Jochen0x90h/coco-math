@@ -43,27 +43,62 @@ TEST(cocoTest, ceil) {
 // -----
 
 TEST(LedControl, hsv2rgb) {
-	{
-		float3 hsv = {0, 1.0, 1.0};
-		float3 color = hsv2rgb(hsv);
-		EXPECT_FLOAT_EQ(color.x, 1.0f);
-		EXPECT_FLOAT_EQ(color.y, 0);
-		EXPECT_FLOAT_EQ(color.z, 0);
-	}
-	{
-		float3 hsv = {0.25f / 6.0f, 1.0, 1.0};
-		float3 color = hsv2rgb(hsv);
-		EXPECT_FLOAT_EQ(color.x, 1.0f);
-		EXPECT_FLOAT_EQ(color.y, 0.25f);
-		EXPECT_FLOAT_EQ(color.z, 0);
-	}
-	{
-		float3 hsv = {1.25f / 6.0f, 1.0, 1.0};
-		float3 color = hsv2rgb(hsv);
-		EXPECT_FLOAT_EQ(color.x, 0.75f);
-		EXPECT_FLOAT_EQ(color.y, 1.0f);
-		EXPECT_FLOAT_EQ(color.z, 0);
-	}
+    {
+        // red (0°, 100%, 100%)
+        float3 hsv = {0, 1.0, 1.0};
+        float3 rgb = hsv2rgb(hsv);
+        EXPECT_FLOAT_EQ(rgb.x, 1.0f);
+        EXPECT_FLOAT_EQ(rgb.y, 0);
+        EXPECT_FLOAT_EQ(rgb.z, 0);
+
+        // convert back
+        float3 hsv2 = rgb2hsv(rgb);
+        EXPECT_FLOAT_EQ(hsv.x, hsv2.x);
+        EXPECT_FLOAT_EQ(hsv.y, hsv2.y);
+        EXPECT_FLOAT_EQ(hsv.z, hsv2.z);
+    }
+    {
+        // green (120°, 100%, 100%)
+        float3 hsv = {0.25f / 6.0f, 1.0, 1.0};
+        float3 rgb = hsv2rgb(hsv);
+        EXPECT_FLOAT_EQ(rgb.x, 1.0f);
+        EXPECT_FLOAT_EQ(rgb.y, 0.25f);
+        EXPECT_FLOAT_EQ(rgb.z, 0);
+
+        // convert back
+        float3 hsv2 = rgb2hsv(rgb);
+        EXPECT_FLOAT_EQ(hsv.x, hsv2.x);
+        EXPECT_FLOAT_EQ(hsv.y, hsv2.y);
+        EXPECT_FLOAT_EQ(hsv.z, hsv2.z);
+    }
+    {
+        // blue (240°, 100%, 100%)
+        float3 hsv = {1.25f / 6.0f, 1.0, 1.0};
+        float3 rgb = hsv2rgb(hsv);
+        EXPECT_FLOAT_EQ(rgb.x, 0.75f);
+        EXPECT_FLOAT_EQ(rgb.y, 1.0f);
+        EXPECT_FLOAT_EQ(rgb.z, 0);
+
+        // convert back
+        float3 hsv2 = rgb2hsv(rgb);
+        EXPECT_FLOAT_EQ(hsv.x, hsv2.x);
+        EXPECT_FLOAT_EQ(hsv.y, hsv2.y);
+        EXPECT_FLOAT_EQ(hsv.z, hsv2.z);
+    }
+    {
+        // red (0°, 50%, 100%)
+        float3 hsv = {0, 0.5, 1.0};
+        float3 rgb = hsv2rgb(hsv);
+        EXPECT_FLOAT_EQ(rgb.x, 1.0f);
+        EXPECT_FLOAT_EQ(rgb.y, 0.5f);
+        EXPECT_FLOAT_EQ(rgb.z, 0.5f);
+
+        // convert back
+        float3 hsv2 = rgb2hsv(rgb);
+        EXPECT_FLOAT_EQ(hsv.x, hsv2.x);
+        EXPECT_FLOAT_EQ(hsv.y, hsv2.y);
+        EXPECT_FLOAT_EQ(hsv.z, hsv2.z);
+    }
 }
 
 
