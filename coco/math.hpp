@@ -121,12 +121,12 @@ inline float sqrt(float x) {
 /// @param x Argument
 /// @return sine of x
 inline float sin(float x) {
-    cordic::configure(cordic::Function::SINE, cordic::Format::IN_2x16_OUT_2x16, 4);
+    auto c = cordic::instance().configure(cordic::Function::SINE, cordic::Format::IN_2x16_OUT_2x16, 4);
 
     float y = x * 0.1591549f;
     int angle = roundToInt(y * 65536.0f);// - (roundToInt(y - 0.5f) << 16);
-    cordic::write2xi16(angle, 0x7fff); // angle and amplitude of sin/cos
-    auto [result, _] = cordic::read2xi16();
+    c.i16x2(angle, 0x7fff); // angle and amplitude of sin/cos
+    auto [result, _] = c.i16x2();
     return float(result) * 3.0518509e-05f;
 }
 
@@ -134,12 +134,12 @@ inline float sin(float x) {
 /// @param x Argument
 /// @return cosine of x
 inline float cos(float x) {
-    cordic::configure(cordic::Function::COSINE, cordic::Format::IN_2x16_OUT_2x16, 4);
+    auto c = cordic::instance().configure(cordic::Function::COSINE, cordic::Format::IN_2x16_OUT_2x16, 4);
 
     float y = x * 0.1591549f;
     int angle = roundToInt(y * 65536.0f);// - (roundToInt(y - 0.5f) << 16);
-    cordic::write2xi16(angle, 0x7fff); // angle and amplitude of sin/cos
-    auto [result, _] = cordic::read2xi16();
+    c.i16x2(angle, 0x7fff); // angle and amplitude of sin/cos
+    auto [result, _] = c.i16x2();
     return float(result) * 3.0518509e-05f;
 }
 
@@ -148,13 +148,13 @@ inline float cos(float x) {
 /// @param x x coordinate
 /// @return arctangent of y and x in range [-pi, pi)
 inline float atan2(float y, float x) {
-    cordic::configure(cordic::Function::MODULUS, cordic::Format::IN_2x16_OUT_2x16, 4);
+    auto c = cordic::instance().configure(cordic::Function::MODULUS, cordic::Format::IN_2x16_OUT_2x16, 4);
 
     float scale = 32767.0f / max(abs(x), abs(y));
     int a = roundToInt(x * scale);
     int b = roundToInt(y * scale);
-    cordic::write2xi16(a, b);
-    auto [_, result] = cordic::read2xi16();
+    c.i16x2(a, b);
+    auto [_, result] = c.i16x2();
     return float(result) * 9.5873799e-05f;
 }
 
