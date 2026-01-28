@@ -22,7 +22,7 @@ void testFract() {
         float z = x - std::floor(x);
         float d = y - z;
 
-        debug::out << flt(y) << ' ' << flt(z) << ' ' << flt(d) << '\n';
+        debug::out << dec(y) << ' ' << dec(z) << ' ' << dec(d) << '\n';
         result &= check(d);
     }
     debug::out << (result ? "OK\n" : "ERROR\n");
@@ -38,7 +38,7 @@ void testSin() {
         float z = std::sin(x * 6.2831853f);
         float d = y - z;
 
-        debug::out << flt(y) << ' ' << flt(z) << ' ' << flt(d) << '\n';
+        debug::out << dec(y) << ' ' << dec(z) << ' ' << dec(d) << '\n';
         result &= check(d);
     }
     debug::out << (result ? "OK\n" : "ERROR\n");
@@ -54,7 +54,7 @@ void testCos() {
         float z = std::cos(x * 6.2831853f);
         float d = y - z;
 
-        debug::out << flt(y) << ' ' << flt(z) << ' ' << flt(d) << '\n';
+        debug::out << dec(y) << ' ' << dec(z) << ' ' << dec(d) << '\n';
         result &= check(d);
     }
     debug::out << (result ? "OK\n" : "ERROR\n");
@@ -73,7 +73,7 @@ void testAtan() {
         float z = std::atan2(b, a);
         float d = y - z;
 
-        debug::out << flt(y) << ' ' << flt(z) << ' ' << flt(d) << '\n';
+        debug::out << dec(y) << ' ' << dec(z) << ' ' << dec(d) << '\n';
         result &= check(d);
     }
     debug::out << (result ? "OK\n" : "ERROR\n");
