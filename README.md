@@ -1,6 +1,7 @@
 # CoCo Math
 
-Accelerated math functions using inline assembler or math accelerators of microcontrollers such as CORDIC
+Accelerated math functions using inline assembler or math accelerators of microcontrollers such as CORDIC.
+Resolution and accuracy are reduced compared to std math functions.
 
 ## Import
 Add coco-math/\<version> to your conanfile where version corresponds to the git tags
